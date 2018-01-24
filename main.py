@@ -1,70 +1,28 @@
 from CollegeSchedule import Course, Slot, Timetable
 from itertools import product
 
+
+# Example Data
+
 # Algorithms
 algo = Course("Algorithms")
-algo.add_slot(1, 0, (9, 10), "Lecture")
-algo.add_slot(1, 0, (7, 8), "Section")
+algo.add_slot(1, 0, (1, 2), "Lecture")
+algo.add_slot(1, 0, (3, 4), "Section")
+algo.add_slot(1, 1, (3, 4), "Lab")
 
-algo.add_slot(2, 1, (7, 8), "Lecture")
-algo.add_slot(2, 4, (3, 3), "Section")
-
-algo.add_slot(3, 1, (11, 12), "Lecture")
-algo.add_slot(3, 4, (1, 1), "Section")
-
-
-# DB
-
-DB = Course("Database")
-DB.add_slot(1, 2, (7, 8), "Lecture")
-DB.add_slot(1, 2, (11, 11), "Section")
-DB.add_slot(1, 2, (12, 12), "Lab")
-
-DB.add_slot(2, 0, (9, 10), "Lecture")
-DB.add_slot(2, 1, (11, 11), "Section")
-DB.add_slot(2, 0, (7, 8), "Lab")
-
-DB.add_slot(3, 5, (3, 4), "Lecture")
-DB.add_slot(3, 5, (2, 2), "Section")
-DB.add_slot(3, 5, (1, 1), "Lab")
-
-# Analog shit
-analog = Course("Analog")
-analog.add_slot(1, 4, (1, 2), "Lecture")
-analog.add_slot(1, 5, (9, 10), "Section")
-analog.add_slot(1, 4, (5, 5), "Lab")
-
-analog.add_slot(2, 4, (5, 6), "Lecture")
-analog.add_slot(2, 2, (3, 4), "Section")
-analog.add_slot(2, 4, (4, 4), "Lab")
-
-analog.add_slot(3, 4, (3, 4), "Lecture")
-analog.add_slot(3, 0, (11, 12), "Section")
-analog.add_slot(3, 4, (2, 2), "Lab")
+algo.add_slot(2, 0, (1, 2), "Lecture")
+algo.add_slot(2, 2, (1, 2), "Section")
+algo.add_slot(2, 3, (1, 2), "Lab")
 
 # OS
-OS = Course("Operating Systems")
-OS.add_slot(1, 4, (3, 4), "Lecture")
-OS.add_slot(1, 5, (11, 12), "Section")
-OS.add_slot(1, 4, (6, 6), "Lab")
+os = Course("Operating Systems")
+os.add_slot(1, 0, (5, 6), "Lecture")
+os.add_slot(1, 0, (7, 8), "Section")
+os.add_slot(1, 1, (5, 6), "Lab")
 
-
-OS.add_slot(2, 4, (7, 8), "Lecture")
-OS.add_slot(2, 3, (1, 2), "Section")
-OS.add_slot(2, 2, (12, 12), "Lab")
-
-OS.add_slot(3, 4, (5, 6), "Lecture")
-OS.add_slot(3, 0, (9, 10), "Section")
-OS.add_slot(3, 0, (7, 8), "Lab")
-
-# Numerical
-Num = Course("Numerical")
-
-Num.add_slot(2, 5, (7, 8), "Lecture")
-Num.add_slot(2, 5, (9, 10), "Section")
-
-Num.add_slot(3, 3, (9, 10), "Lecture")
-Num.add_slot(3, 3, (7, 8), "Section")
+os.add_slot(2, 0, (1, 2), "Lecture")
+os.add_slot(2, 4, (7, 8), "Section")
+os.add_slot(2, 5, (5, 6), "Lab")
 
 def generate_best_timetables(courses, MAX_GROUP_NUM = 3):
     """
@@ -102,7 +60,7 @@ def generate_best_timetables(courses, MAX_GROUP_NUM = 3):
     return total_tt
 
 def main():
-    courses = [OS, algo, DB, Num, analog]
+    courses = [os, algo]
     total_tt = generate_best_timetables(courses)
 
     for tt in total_tt:
